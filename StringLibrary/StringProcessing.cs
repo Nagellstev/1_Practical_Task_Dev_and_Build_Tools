@@ -13,8 +13,8 @@ namespace StringLibrary
 {
     public class StringProcessing
     {
-        
         JsonWriter writer;
+
         public StringProcessing()
         {
             StreamWriter logFile = File.CreateText("StringProcessing.json");
@@ -26,22 +26,25 @@ namespace StringLibrary
             writer.WriteStartArray();
         }
         
-        public int DoProcessing(string inputStr)
+        public int MaxNumberOfUnequalChars(string inputStr)
         {
             writer.WriteStartObject();
             writer.WritePropertyName("Input String");
             writer.WriteValue(inputStr);
+
             int result = 0;
             int currNumberOfUneqCh = 0;
+            inputStr = inputStr[0] + inputStr + inputStr[inputStr.Length - 1];
 
-            for (int i = 1; i < inputStr.Length; i++)
+            for (int i = 0; i < inputStr.Length - 1; i++)
             {
-                if (inputStr[i] != inputStr[i - 1])
+                if (inputStr[i] != inputStr[i + 1])
                 {
                     currNumberOfUneqCh++;
                 }
                 else
                 {
+                    currNumberOfUneqCh++;
                     if (result < currNumberOfUneqCh)
                     {
                         result = currNumberOfUneqCh;
@@ -63,6 +66,5 @@ namespace StringLibrary
             writer.WriteEndObject();
             writer.Close();
         }
-        
     }
 }

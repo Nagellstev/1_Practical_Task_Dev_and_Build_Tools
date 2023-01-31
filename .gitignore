@@ -1,0 +1,6 @@
+$ cat .gitignore
+
+# exclude folders bin, obj and .vs
+**/bin
+**/obj
+**/.vs
