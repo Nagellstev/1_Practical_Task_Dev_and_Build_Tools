@@ -8,14 +8,15 @@ using StringLibrary;
 
 namespace CalculatorProgram
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {
             bool endApp = false;
+
             Console.WriteLine("Practical Task: Chapter Development and Build Tools\r");
             Console.WriteLine("-----------\n");
-            StringProcessing strPr = new StringProcessing();
+            StringProcessing stringProcessing = new StringProcessing();
 
             while (!endApp)
             {
@@ -30,12 +31,12 @@ namespace CalculatorProgram
 
                 try
                 {
-                    result = strPr.MaxNumberOfUnequalChars(input);
-                    Console.WriteLine("Maximum number of unequal consecutive characters in this line is \n" + result);
+                    result = stringProcessing.MaxNumberOfUnequalChars(input);
+                    Console.WriteLine($"Maximum number of unequal consecutive characters in this line is \n {result}");
                 }
-                catch (Exception e)
+                catch (Exception exeption)
                 {
-                    Console.WriteLine("Something Wrong!\n" + e.Message);
+                    Console.WriteLine($"Something Wrong!\n {exeption.Message}");
                 }
 
                 Console.WriteLine("----------------------\n");
@@ -48,7 +49,9 @@ namespace CalculatorProgram
 
                 Console.WriteLine("\n");
             }
-            strPr.Finish();
+
+            stringProcessing.Finish();
+
             return;
         }
     }

@@ -21,35 +21,38 @@ namespace StringLibrary
             logFile.AutoFlush = true;
             writer = new JsonTextWriter(logFile);
             writer.Formatting = Newtonsoft.Json.Formatting.Indented;
+
             writer.WriteStartObject();
             writer.WritePropertyName("String Processings");
             writer.WriteStartArray();
         }
         
-        public int MaxNumberOfUnequalChars(string inputStr)
+        public int MaxNumberOfUnequalChars(string inputString)
         {
             writer.WriteStartObject();
             writer.WritePropertyName("Input String");
-            writer.WriteValue(inputStr);
+            writer.WriteValue(inputString);
 
             int result = 0;
-            int currNumberOfUneqCh = 0;
-            inputStr = inputStr[0] + inputStr + inputStr[inputStr.Length - 1];
+            int currentNumberOfUnequalChars = 0;
+            inputString = inputString[0] + inputString + inputString[inputString.Length - 1];
 
-            for (int i = 0; i < inputStr.Length - 1; i++)
+            for (int i = 0; i < inputString.Length - 1; i++)
             {
-                if (inputStr[i] != inputStr[i + 1])
+                if (inputString[i] != inputString[i + 1])
                 {
-                    currNumberOfUneqCh++;
+                    currentNumberOfUnequalChars++;
                 }
                 else
                 {
-                    currNumberOfUneqCh++;
-                    if (result < currNumberOfUneqCh)
+                    currentNumberOfUnequalChars++;
+
+                    if (result < currentNumberOfUnequalChars)
                     {
-                        result = currNumberOfUneqCh;
+                        result = currentNumberOfUnequalChars;
                     }
-                    currNumberOfUneqCh = 0;
+
+                    currentNumberOfUnequalChars = 0;
                 }
             }
 
